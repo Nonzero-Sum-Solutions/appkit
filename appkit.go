@@ -7,18 +7,19 @@ import (
 
 	"github.com/mattmunz/appkit/cmd"
 	"github.com/mattmunz/appkit/misc"
-	"github.com/mattmunz/appkit/model"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
 	klog "github.com/go-kit/kit/log"
+
+	gmodel "github.com/mattmunz/appkit/model/gen/appkit"
 )
 
 var (
 	cfgFile string
 )
 
-func DoInit(cli1 model.CLI) {
+func DoInit(cli1 gmodel.CLI) {
 	logger := klog.NewLogfmtLogger(klog.NewSyncWriter(os.Stdout))
 
 	misc.LogMessage(logger, "Logger initialized.")
@@ -45,14 +46,14 @@ func DoInit(cli1 model.CLI) {
 }
 
 type cliImpl struct {
-	app              model.App
+	app              gmodel.App
 	name             string
 	shortDescription string
 	logger           klog.Logger
-	commandFactory   model.CommandFactory
+	commandFactory   gmodel.CommandFactory
 }
 
-func (c *cliImpl) App() model.App {
+func (c *cliImpl) App() gmodel.App {
 	return c.app
 }
 
@@ -89,7 +90,7 @@ func (c *cliImpl) Execute() {
 	}
 }
 
-func NewCLI(app model.App, name, shortDescription string, commandFactory model.CommandFactory) model.CLI {
+func NewCLI(app gmodel.App, name, shortDescription string, commandFactory gmodel.CommandFactory) gmodel.CLI {
 	return &cliImpl{
 		app:              app,
 		name:             name,
@@ -97,7 +98,7 @@ func NewCLI(app model.App, name, shortDescription string, commandFactory model.C
 		commandFactory:   commandFactory,
 	}
 }
-func NewCommandBase(cli model.CLI) *cobra.Command {
+func NewCommandBase(cli gmodel.CLI) *cobra.Command {
 	newCmd := &cobra.Command{
 		Use:   cli.Name(),
 		Short: cli.ShortDescription(),
@@ -110,7 +111,7 @@ func NewCommandBase(cli model.CLI) *cobra.Command {
 }
 
 // TODO Maybe make method on CLI.
-func Execute(cli model.CLI) {
+func Execute(cli gmodel.CLI) {
 	rootCmd, err := cli.NewRootCommand()
 	if err != nil {
 		fmt.Println(err)
@@ -123,7 +124,7 @@ func Execute(cli model.CLI) {
 	}
 }
 
-func newVersionCommand(cli model.CLI) *cobra.Command {
+func newVersionCommand(cli gmodel.CLI) *cobra.Command {
 	return &cobra.Command{
 		Use:   "version",
 		Short: "Show the version number of this command.",
@@ -131,7 +132,7 @@ func newVersionCommand(cli model.CLI) *cobra.Command {
 	}
 }
 
-func doVersion(cli model.CLI, _ *cobra.Command, _ []string) error {
+func doVersion(cli gmodel.CLI, _ *cobra.Command, _ []string) error {
 	fmt.Println(cli.App().Version())
 	return nil
 }
