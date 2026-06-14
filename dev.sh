@@ -1,9 +1,7 @@
 #!/bin/sh
 
 test() {
-  DATA_PATH="$(realpath ./test/data)"
-
-  TEST_DATA_PATH=$DATA_PATH go test -test.v ./test/unit/...
+  go test -test.v ./test/unit/...
 }
 
 case $1 in
