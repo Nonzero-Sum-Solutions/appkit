@@ -1,0 +1,17 @@
+App
+* ID String
+* Version String
+* ConfigName String
+
+CLI :: Command
+* AppID String
+* Name String
+* ShortDescription String
+* NewRootCommand ()
+* SetLogger (Logger Logger)
+
+CommandFactory
+* New () -> (Cmd CobraCommand)
+
+Command 
+* Execute ()
