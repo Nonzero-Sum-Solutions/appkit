@@ -1,37 +1,9 @@
+// Model objects for appkit.
+// Some of the model code for appkit is generated and can be found at
+// github.com/mattmunz/appkit/model/gen/appkit.
 package model
 
-import (
-	klog "github.com/go-kit/kit/log"
-	"github.com/spf13/cobra"
-)
-
-/*
-TODO replace this with code generated from design language.
-*/
-
-type App interface {
-	ID() string
-	Version() string
-	ConfigName() string
-}
-
-type CLI interface {
-	Command
-	App() App
-	Name() string
-	ShortDescription() string
-	NewRootCommand() (*cobra.Command, error)
-	Logger() klog.Logger
-	SetLogger(logger klog.Logger)
-}
-
-type Command interface {
-	Execute()
-}
-
-type CommandFactory interface {
-	New() *cobra.Command
-}
+import gmodel "github.com/mattmunz/appkit/model/gen/appkit"
 
 type appImpl struct {
 	id         string
@@ -51,7 +23,7 @@ func (a *appImpl) ConfigName() string {
 	return a.configName
 }
 
-func NewApp(id, version, configName string) App {
+func NewApp(id, version, configName string) gmodel.App {
 	return &appImpl{
 		id:         id,
 		version:    version,
