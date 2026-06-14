@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"errors"
 	"fmt"
 	"os"
 
@@ -50,6 +49,7 @@ type cliImpl struct {
 	name             string
 	shortDescription string
 	logger           klog.Logger
+	commandFactory   model.CommandFactory
 }
 
 func (c *cliImpl) App() model.App {
@@ -73,7 +73,7 @@ func (c *cliImpl) SetLogger(logger klog.Logger) {
 }
 
 func (c *cliImpl) NewRootCommand() (*cobra.Command, error) {
-	return nil, errors.New("Not implemented")
+	return c.commandFactory.New(), nil
 }
 
 func (c *cliImpl) Execute() {
