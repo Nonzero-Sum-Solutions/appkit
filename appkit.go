@@ -89,11 +89,12 @@ func (c *cliImpl) Execute() {
 	}
 }
 
-func NewCLI(app model.App, name, shortDescription string) model.CLI {
+func NewCLI(app model.App, name, shortDescription string, commandFactory model.CommandFactory) model.CLI {
 	return &cliImpl{
 		app:              app,
 		name:             name,
 		shortDescription: shortDescription,
+		commandFactory:   commandFactory,
 	}
 }
 func NewCommandBase(cli model.CLI) *cobra.Command {
