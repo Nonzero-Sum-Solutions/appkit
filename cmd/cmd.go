@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	gmodel "github.com/mattmunz/appkit/model/gen/appkit"
+	gmodel "github.com/Nonzero-Sum-Solutions/appkit/model/gen/appkit"
 	"github.com/spf13/cobra"
 )
 

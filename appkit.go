@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mattmunz/appkit/cmd"
-	"github.com/mattmunz/appkit/misc"
+	"github.com/Nonzero-Sum-Solutions/appkit/cmd"
+	"github.com/Nonzero-Sum-Solutions/appkit/misc"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
 	klog "github.com/go-kit/kit/log"
 
-	gmodel "github.com/mattmunz/appkit/model/gen/appkit"
+	gmodel "github.com/Nonzero-Sum-Solutions/appkit/model/gen/appkit"
 )
 
 var (

@@ -1,9 +1,9 @@
 // Model objects for appkit.
 // Some of the model code for appkit is generated and can be found at
-// github.com/mattmunz/appkit/model/gen/appkit.
+// github.com/Nonzero-Sum-Solutions/appkit/model/gen/appkit.
 package model
 
-import gmodel "github.com/mattmunz/appkit/model/gen/appkit"
+import gmodel "github.com/Nonzero-Sum-Solutions/appkit/model/gen/appkit"
 
 type appImpl struct {
 	id         string
