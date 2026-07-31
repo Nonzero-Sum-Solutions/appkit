@@ -6,7 +6,7 @@ import (
 
 	klog "github.com/go-kit/kit/log"
 
-	"github.com/mattmunz/appkit/misc"
+	"github.com/Nonzero-Sum-Solutions/appkit/misc"
 )
 
 func TestMultiLineLog(t *testing.T) {
