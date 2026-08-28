@@ -16,6 +16,7 @@ import (
 )
 
 var (
+	version = "1.0.0"
 	cfgFile string
 )
 
@@ -26,7 +27,7 @@ func DoInit(cli1 gmodel.CLI) {
 
 	cli1.SetLogger(logger)
 
-	misc.LogMessage(cli1.Logger(), "CLI initialized.")
+	misc.LogMessage(cli1.Logger(), fmt.Sprintf("CLI initialized. Appkit version %s", version))
 
 	initConfig2 := func() {
 		if cfgFile != "" {
@@ -74,7 +75,7 @@ func (c *cliImpl) SetLogger(logger klog.Logger) {
 }
 
 func (c *cliImpl) NewRootCommand() (*cobra.Command, error) {
-	return c.commandFactory.New(), nil
+	return c.commandFactory.New()
 }
 
 func (c *cliImpl) Execute() {
