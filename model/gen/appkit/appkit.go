@@ -15,6 +15,14 @@ type App interface {
 	ConfigName() string
 }
 
+type DBConfig interface {
+	SupabaseURL() string
+	SupabaseAPIKey() string
+	SupabaseUserEmail() string
+	SupabaseUserPwd() string
+	SupabaseTimeoutSeconds() int
+}
+
 type Command interface {
 	Execute()
 }
@@ -32,5 +40,5 @@ type CLI interface {
 }
 
 type CommandFactory interface {
-	New() (cmd *cobra.Command)
+	New() (cmd *cobra.Command, err error)
 }

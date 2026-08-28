@@ -20,4 +20,11 @@ CLI :: Command
 * SetLogger (Logger Logger)
 
 CommandFactory
-* New () -> (Cmd CommandImpl)
+* New () -> (Cmd CommandImpl, Err Error)
+
+DBConfig
+* SupabaseURL String
+* SupabaseAPIKey String
+* SupabaseUserEmail String
+* SupabaseUserPwd String
+* SupabaseTimeoutSeconds Integer
